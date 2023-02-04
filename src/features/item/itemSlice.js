@@ -1,5 +1,5 @@
 import { createSlice as itemSlice } from "@reduxjs/toolkit";
-import { ADD_ITEM_TO_CART, REMOVE_FROM_CART } from "../../constants/index"
+import { ADD_ITEM_TO_CART, REMOVE_FROM_CART } from "../../constants/index";
 
 const initialState = {
     cartItems: []
@@ -23,4 +23,5 @@ const { actions, reducer } = itemSlice({
 });
 
 
-export { actions, reducer };
+export default reducer;
+export { actions }; 
