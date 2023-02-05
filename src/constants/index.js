@@ -1,5 +1,0 @@
-export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
-export const REMOVE_FROM_CART = "REMOVE_FROM_CART";
-export const FETCHING_DATA = "FETCHING_DATA";
-export const DATA_FETCHED = "DATA_FETCHED";
-export const ERROR_OCCURRED = "ERROR_OCCURRED";

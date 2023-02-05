@@ -3,13 +3,13 @@ import { Image, Text, Pressable } from "react-native";
 import Products from "../screens/Products";
 import Cart from "../screens/Cart";
 import cartImg from "../assets/shopping-cart.png";
-import store from "../store";
-
-// const itemCount = store.getState().reducer.cartItems.length;
+import { useSelector } from "react-redux";
 
 const Stack = createStackNavigator();
 
 export default function StackNavigator() {
+    const cartItemCount = useSelector((state) => state.item.cartItems);
+
     return (
         <Stack.Navigator>
             <Stack.Screen name="Products" component={Products} options={({navigation}) => ({
@@ -22,8 +22,10 @@ export default function StackNavigator() {
                             right: 0,
                             color: "#fff",
                             backgroundColor: "orange",
-                            padding: 1
-                        }}>{0}</Text>
+                            padding: 2,
+                            borderRadius: 7,
+                            fontWeight: "600"
+                        }}>{cartItemCount.length}</Text>
                     </Pressable>
                 )
             })} />
