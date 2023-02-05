@@ -1,19 +1,28 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import { useDispatch } from 'react-redux';
+import { actions as itemActions } from "../features/item/itemSlice"
 
-const Product = ({ img, name, price, rate }) => {
+const Product = ({ details }) => {
+
+    const { image, title, price, rating: { rate } } = details;
+    const dispatch = useDispatch();
 
     return (
         <View style={styles.productBox}>
-            <Image source={{ uri: img }} style={styles.img} resizeMode={"contain"} />
+            <Image source={{ uri: image }} style={styles.img} resizeMode={"contain"} />
             <View style={styles.details}>
-                <Text style={styles.text}>{name}</Text>
-                <View style={{ justifyContent: "center"}}>
+                <Text style={styles.text}>{title}</Text>
+                <View style={{ justifyContent: "center" }}>
                     <Text
-                        style={[styles.text, {color: "black"}]}
+                        style={[styles.text, { color: "black" }]}
                     >${price}</Text>
                     <Text style={{ color: "orange", textAlign: 'center' }}>{rate}</Text>
                 </View>
-                <TouchableOpacity style={styles.button} activeOpacity={0.9}>
+                <TouchableOpacity
+                    style={styles.button}
+                    activeOpacity={0.9}
+                    onPress={() => dispatch(itemActions.ADD_ITEM_TO_CART(details))}
+                >
                     <Text style={{ color: "white" }}>+ Add to cart</Text>
                 </TouchableOpacity>
             </View>
@@ -43,7 +52,7 @@ const styles = StyleSheet.create({
         width: "60%",
         padding: 10,
         borderRadius: 5,
-        backgroundColor: "crimson"
+        backgroundColor: "orange"
     },
     text: { fontWeight: "500", color: "grey", textAlign: 'center' }
 })

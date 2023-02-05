@@ -22,15 +22,9 @@ const Products = () => {
        <ScrollView>
           {
             data.map(item => {
-              if(item.id === 1) {
-                console.log(item)
-              }
               return (
                 <Product 
-                name={item.title} 
-                img={item.image} 
-                price={item.price}
-                rate={item.rating.rate}
+                  details={item}
                 key={Math.random() * Date.now()} />
               )
             })
